@@ -4,13 +4,13 @@
 #include <iostream>
 
 
-Rect::Rect(int _w, int _h, int _x, int _y, int _r, int _g, int _b, int _a) :
-	w(_w), h(_h), x(_x), y(_y), r(_r), g(_g), b(_b), a(_a)
+Rect::Rect(int _w, int _h, int _r, int _g, int _b, int _a) :
+	w(_w), h(_h), r(_r), g(_g), b(_b), a(_a)
 {
 }
 
-Rect::Rect(SDL_Renderer *renderer, int _w, int _h, int _x, int _y, const std::string &image_path) :
-	w(_w), h(_h), x(_x), y(_y)
+Rect::Rect(SDL_Renderer *renderer, int _w, int _h, const std::string &image_path) :
+	w(_w), h(_h)
 {
 	texture = nullptr;
 
@@ -35,36 +35,14 @@ Rect::~Rect()
 	SDL_DestroyTexture(texture); 
 }
 
-void Rect::Draw(SDL_Renderer *renderer) {
+
+void Rect::Draw(SDL_Renderer *renderer, int x, int y) {
 	SDL_Rect rect = { x, y, w, h };
 	if (texture) {
 		SDL_RenderCopy(renderer, texture, nullptr, &rect);
 	}
 	else {
-		SDL_SetRenderDrawColor(Window::renderer, r, g, b, a);
-		SDL_RenderFillRect(Window::renderer, &rect);
-	}
-}
-
-void Rect::PollEvents(SDL_Event &event) {
-	
-	if (event.type == SDL_KEYDOWN) {
-		switch (event.key.keysym.sym) {
-		case SDLK_LEFT:
-			x -= 10;
-			break;
-
-		case SDLK_RIGHT:
-			x += 10;
-			break;
-
-		case SDLK_UP:
-			y -= 10;
-			break;
-
-		case SDLK_DOWN:
-			y += 10;
-			break;
-		}
+		SDL_SetRenderDrawColor(renderer, r, g, b, a);
+		SDL_RenderFillRect(renderer, &rect);
 	}
 }

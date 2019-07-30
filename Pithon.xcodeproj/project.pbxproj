@@ -14,6 +14,8 @@
 		BF2239E622DDF6C400A3CEFC /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2239E122DDF6C400A3CEFC /* Window.cpp */; };
 		BF2239E722DDF6C400A3CEFC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2239E222DDF6C400A3CEFC /* main.cpp */; };
 		BF2239E822DDF6C400A3CEFC /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2239E422DDF6C400A3CEFC /* Rect.cpp */; };
+		BF2239EC22DE07B900A3CEFC /* Brick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2239EB22DE07B900A3CEFC /* Brick.cpp */; };
+		BFF089C422E06E09008F4531 /* Snake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFF089C222E06E09008F4531 /* Snake.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,9 +39,14 @@
 		BF2239DF22DDF6C400A3CEFC /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
 		BF2239E022DDF6C400A3CEFC /* Text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Text.cpp; sourceTree = "<group>"; };
 		BF2239E122DDF6C400A3CEFC /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
-		BF2239E222DDF6C400A3CEFC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		BF2239E222DDF6C400A3CEFC /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = main.cpp; sourceTree = "<group>"; };
 		BF2239E322DDF6C400A3CEFC /* Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Text.h; sourceTree = "<group>"; };
 		BF2239E422DDF6C400A3CEFC /* Rect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rect.cpp; sourceTree = "<group>"; };
+		BF2239E922DE034F00A3CEFC /* Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		BF2239EA22DE049600A3CEFC /* Brick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Brick.h; sourceTree = "<group>"; };
+		BF2239EB22DE07B900A3CEFC /* Brick.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Brick.cpp; sourceTree = "<group>"; };
+		BF53DA9E22E06E4A0057A1DC /* Snake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Snake.h; sourceTree = "<group>"; };
+		BFF089C222E06E09008F4531 /* Snake.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Snake.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,13 +83,18 @@
 		BF2239CF22DDF46800A3CEFC /* Pithon */ = {
 			isa = PBXGroup;
 			children = (
-				BF2239E222DDF6C400A3CEFC /* main.cpp */,
 				BF2239E422DDF6C400A3CEFC /* Rect.cpp */,
 				BF2239DE22DDF6C400A3CEFC /* Rect.h */,
 				BF2239E022DDF6C400A3CEFC /* Text.cpp */,
 				BF2239E322DDF6C400A3CEFC /* Text.h */,
 				BF2239E122DDF6C400A3CEFC /* Window.cpp */,
 				BF2239DF22DDF6C400A3CEFC /* Window.h */,
+				BF2239E922DE034F00A3CEFC /* Location.h */,
+				BF2239EA22DE049600A3CEFC /* Brick.h */,
+				BF2239EB22DE07B900A3CEFC /* Brick.cpp */,
+				BFF089C222E06E09008F4531 /* Snake.cpp */,
+				BF53DA9E22E06E4A0057A1DC /* Snake.h */,
+				BF2239E222DDF6C400A3CEFC /* main.cpp */,
 			);
 			path = Pithon;
 			sourceTree = "<group>";
@@ -155,8 +167,10 @@
 			files = (
 				BF2239E522DDF6C400A3CEFC /* Text.cpp in Sources */,
 				BF2239E622DDF6C400A3CEFC /* Window.cpp in Sources */,
+				BFF089C422E06E09008F4531 /* Snake.cpp in Sources */,
 				BF2239E722DDF6C400A3CEFC /* main.cpp in Sources */,
 				BF2239E822DDF6C400A3CEFC /* Rect.cpp in Sources */,
+				BF2239EC22DE07B900A3CEFC /* Brick.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
