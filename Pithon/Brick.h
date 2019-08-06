@@ -11,6 +11,10 @@
 #define Brick_h
 
 #include "Location.h"
+#include "Rect.h"
+#include <vector>
+#include <memory>
+#include <SDL2/SDL.h>
 
 class Snake;
 
@@ -20,6 +24,9 @@ class Brick
 public:
     Brick(int _number, Location _loc);
     ~Brick();
+    
+    //Draw the brick
+    void Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rects, int brickDimension);
     
     //Get a location
     inline Location GetLocation() { return location; }

@@ -84,9 +84,6 @@ void Window::PollEvents(SDL_Event &event) {
 
 	case SDL_KEYDOWN:
 		switch (event.key.keysym.sym) {
-		case SDLK_a:
-			std::cout << "You clicked 'A'!" << std::endl;
-			break;
 
 		case SDLK_ESCAPE:
 			closed = true;

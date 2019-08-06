@@ -9,5 +9,68 @@
 #ifndef Board_h
 #define Board_h
 
+#include "Snake.h"
+#include "Brick.h"
+#include <vector>
+#include <chrono>
+
+//Decimal expansion of pi in an array
+static const int PI_ACCURACY = 47;
+static int PI_DEC_EXP[PI_ACCURACY] = { 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5, 0, 2, 8, 8, 4, 1, 9, 7, 1, 6, 9 };
+
+class Board
+{
+public:
+    Board(bool _piKnowerMode = false, int screenWidth = 800, int screenHeight = 600, int _dimensionOfOneBrick = 40, Location snakeLocation = {5, 2}, int xDir = 0, int yDir = 1, double _snakeSpeed = 5);
+    ~Board();
+    
+    //Move the snake and check if it collect a brick
+    void Update();
+    
+    //Handle events
+    void PollEvents(SDL_Event &event);
+
+    //Draw the board
+    void Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rects);
+    
+private:
+    //Define the difficulty level of game (when piKnowerMode is disabled, player collect the bricks one by one and learn the decimal expandion of pi; when piKnowerMode is endabled, player see three bricks in one time and he has to choose the one with the correct next pi's decimal expansion number)
+    bool piKnowerMode;
+    
+    //Snake
+    Snake snake;
+    
+    //Bricks to collect
+    std::vector<Brick> bricks;
+    
+    //Bricks dimensions
+    int dimensionOfOneBrick;
+    
+    //Number of columns and rows (depend on screen dimensions and one brick dimension)
+    int nColumns, nRows;
+    
+    //Snake's speed (in locations per second)
+    double snakeSpeed;
+    
+    //Last snake's movement time
+    std::chrono::time_point<std::chrono::system_clock> lastMovementTime;
+    
+    //True when the snake collects a wrong brick, hits itself or gets out the board
+    bool gameOver;
+    
+    //*************
+    
+    //Return the next right pi number depending how many pi number snake has already collected
+    int nextPi();
+    
+    //Return location not occupied by the snake
+    Location findNotOccupiedLocation();
+    
+    //Add a brick with a number which is the next decimal expansion of pi
+    void AddCorrectBrick();
+    
+    //Add a brick with a number which is NOT the next decimal expansion of pi
+    void AddWrongBrick();
+};
 
 #endif /* Board_h */

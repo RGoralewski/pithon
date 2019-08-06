@@ -19,3 +19,8 @@ Brick::~Brick()
 {
 }
 
+void Brick::Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rects, int brickDimension) {
+    if (number < rects.size()) {
+        rects[number] -> Draw(renderer, brickDimension * location.x, brickDimension * location.y);
+    }
+}

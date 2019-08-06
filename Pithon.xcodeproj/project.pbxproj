@@ -15,6 +15,7 @@
 		BF2239E722DDF6C400A3CEFC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2239E222DDF6C400A3CEFC /* main.cpp */; };
 		BF2239E822DDF6C400A3CEFC /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2239E422DDF6C400A3CEFC /* Rect.cpp */; };
 		BF2239EC22DE07B900A3CEFC /* Brick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF2239EB22DE07B900A3CEFC /* Brick.cpp */; };
+		BFC6207A22F088B100F0DE45 /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFC6207922F088B100F0DE45 /* Board.cpp */; };
 		BFF089C422E06E09008F4531 /* Snake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFF089C222E06E09008F4531 /* Snake.cpp */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,8 @@
 		BF2239EA22DE049600A3CEFC /* Brick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Brick.h; sourceTree = "<group>"; };
 		BF2239EB22DE07B900A3CEFC /* Brick.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Brick.cpp; sourceTree = "<group>"; };
 		BF53DA9E22E06E4A0057A1DC /* Snake.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Snake.h; sourceTree = "<group>"; };
+		BFC6207822F044ED00F0DE45 /* Board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
+		BFC6207922F088B100F0DE45 /* Board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
 		BFF089C222E06E09008F4531 /* Snake.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Snake.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +98,8 @@
 				BFF089C222E06E09008F4531 /* Snake.cpp */,
 				BF53DA9E22E06E4A0057A1DC /* Snake.h */,
 				BF2239E222DDF6C400A3CEFC /* main.cpp */,
+				BFC6207822F044ED00F0DE45 /* Board.h */,
+				BFC6207922F088B100F0DE45 /* Board.cpp */,
 			);
 			path = Pithon;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC6207A22F088B100F0DE45 /* Board.cpp in Sources */,
 				BF2239E522DDF6C400A3CEFC /* Text.cpp in Sources */,
 				BF2239E622DDF6C400A3CEFC /* Window.cpp in Sources */,
 				BFF089C422E06E09008F4531 /* Snake.cpp in Sources */,

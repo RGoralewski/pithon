@@ -7,7 +7,9 @@
 //
 
 #include "Snake.h"
+#include "Rect.h"
 #include <iostream>
+#include <memory>
 
 Snake::Snake(int _number, Location _location, int _xDir, int _yDir)
 {
@@ -32,7 +34,7 @@ void Snake::Build(Brick &b) {
 
 void Snake::Move(){
     //Move the snake - each Brick is located in the place of previous Brick
-    for (int n = snake.size() - 1; n >= 0; n--) {
+    for (int n = int(snake.size()) - 1; n >= 0; n--) {
         if (n == 0) {
             //Move head of the snake according to it's direction
             snake[n].location.x += xDir;
@@ -62,4 +64,22 @@ void Snake::ChangeDirection(int _xDir, int _yDir) {
         std::cerr << "Cannot set y direction of the Snake! This value can be only -1, 0 or 1." << std::endl;
 }
 
+int Snake::GetLength(){
+    return int(snake.size());
+}
 
+Location Snake::GetLocation(int n){
+    if (n > 0 || n < snake.size()){
+        return snake[n].location;
+    }
+    else {
+        std::cout << "Incorrect snake's element number passed to Snake::GetLocation(int n)\n";
+        return {-1, -1};
+    }
+}
+
+void Snake::Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rects, int oneBrickDimension) {
+    for (auto &s: snake) {
+        s.Draw(renderer, rects, oneBrickDimension);
+    }
+}
