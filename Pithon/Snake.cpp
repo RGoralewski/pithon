@@ -28,7 +28,11 @@ Snake::~Snake()
 {
 }
 
-void Snake::Build(Brick &b) {
+void Snake::Build(Brick &b, Location l) {
+    //Change the location of the brick
+    b.location = l;
+    
+    //Add to the vector
     snake.push_back(b);
 }
 

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Radek. All rights reserved.
 //
 
+#include <SDL2/SDL.h>
 #include <stdio.h>
 #include <cmath>
 #include <iostream>
@@ -14,8 +15,13 @@
 
 
 
-Board::Board(bool _piKnowerMode, int screenWidth, int screenHeight, int _dimensionOfOneBrick, Location snakeLocation, int xDir, int yDir, double _snakeSpeed) :
-    piKnowerMode(_piKnowerMode), dimensionOfOneBrick(_dimensionOfOneBrick), snake(3, snakeLocation, xDir, yDir), snakeSpeed(_snakeSpeed)
+Board::Board(SDL_Renderer* renderer, const std::string &fontPath, bool _piKnowerMode, int screenWidth, int screenHeight, int _dimensionOfOneBrick, Location snakeLocation, int xDir, int yDir, double _snakeSpeed) :
+    piKnowerMode(_piKnowerMode), dimensionOfOneBrick(_dimensionOfOneBrick), snake(3, snakeLocation, xDir, yDir),
+    snakeSpeed(_snakeSpeed),
+
+    //Create communications
+    crashCommunication(renderer, fontPath, 60, "Snake is crashed!", {255, 255, 255}),
+    wrongNumberCommunication(renderer, fontPath, 60, "This is not the PI number!", {255, 255, 255})
 {
     nColumns = screenWidth/dimensionOfOneBrick;
     nRows = screenHeight/dimensionOfOneBrick;
@@ -23,8 +29,11 @@ Board::Board(bool _piKnowerMode, int screenWidth, int screenHeight, int _dimensi
     //Initialize time
     lastMovementTime = std::chrono::system_clock::now();
     
+    //Booleans initially are false
     gameOver = false;
+    wrongNumberGameOver = false;
     
+    //Place the bricks
     if (piKnowerMode) {
         //Add one correct and two wrong bricks
         AddCorrectBrick();
@@ -103,7 +112,7 @@ void Board::Update() {
     //If there's been more then 1/snakeSpeed seconds from last move
     auto timeLimit = 1/snakeSpeed * std::chrono::seconds{1};
     auto now = std::chrono::system_clock::now();
-    if (now - lastMovementTime > timeLimit) {
+    if (now - lastMovementTime > timeLimit && !gameOver) {
         //Move the snake
         snake.Move();
         //Save movement time
@@ -117,7 +126,7 @@ void Board::Update() {
                 //Is it the right brick number?
                 if (bricks[j].GetNumber() == nextPi()) {
                     //If it is add the brick to snake and clear the bricks vector
-                    snake.Build(bricks[j]);
+                    snake.Build(bricks[j], {nColumns, 0}); //location outside of the screen (to avoid collision before first Move and to not see this brick for this time)
                     bricks.clear();
                     
                     
@@ -133,6 +142,7 @@ void Board::Update() {
                 }
                 else {
                     gameOver = true;
+                    wrongNumberGameOver = true;
                 }
             }
         }
@@ -141,7 +151,18 @@ void Board::Update() {
     //Check if the snake gets out the board
     if (snake.GetLocation(0).x < 0 || snake.GetLocation(0).x >= nColumns || snake.GetLocation(0).y < 0 || snake.GetLocation(0).y >= nRows) {
         gameOver = true;
+        wrongNumberGameOver = false;
     }
+
+    //Check if the snake hits itself
+    for (int i = 1; i < snake.GetLength(); i++) {
+        //Snake hits itself if its head is in the same place where some its brick
+        if (snake.GetLocation(0).x == snake.GetLocation(i).x && snake.GetLocation(0).y == snake.GetLocation(i).y) {
+            gameOver = true;
+            wrongNumberGameOver = false;
+        }
+    }
+
 }
 
 void Board::PollEvents(SDL_Event &event) {
@@ -185,5 +206,13 @@ void Board::Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rec
     //Draw the bricks
     for (auto &b: bricks) {
         b.Draw(renderer, rects, dimensionOfOneBrick);
+    }
+    
+    //Draw communication if there's a game over
+    if (gameOver && !wrongNumberGameOver) {
+        crashCommunication.Draw(nColumns*dimensionOfOneBrick/2 - crashCommunication.GetWidth()/2, nRows*dimensionOfOneBrick/2 - crashCommunication.GetHeight(), renderer);
+    }
+    if (gameOver && wrongNumberGameOver) {
+        wrongNumberCommunication.Draw(nColumns*dimensionOfOneBrick/2 - wrongNumberCommunication.GetWidth()/2, nRows*dimensionOfOneBrick/2 - wrongNumberCommunication.GetHeight(), renderer);
     }
 }

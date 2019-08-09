@@ -9,8 +9,10 @@
 #ifndef Board_h
 #define Board_h
 
+#include <SDL2/SDL.h>
 #include "Snake.h"
 #include "Brick.h"
+#include "Text.h"
 #include <vector>
 #include <chrono>
 
@@ -21,7 +23,7 @@ static int PI_DEC_EXP[PI_ACCURACY] = { 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9,
 class Board
 {
 public:
-    Board(bool _piKnowerMode = false, int screenWidth = 800, int screenHeight = 600, int _dimensionOfOneBrick = 40, Location snakeLocation = {5, 2}, int xDir = 0, int yDir = 1, double _snakeSpeed = 5);
+    Board(SDL_Renderer* renderer = nullptr, const std::string &fontPath = "fonts/Pacifico.ttf", bool _piKnowerMode = false, int screenWidth = 800, int screenHeight = 600, int _dimensionOfOneBrick = 40, Location snakeLocation = {5, 2}, int xDir = 0, int yDir = 1, double _snakeSpeed = 5);
     ~Board();
     
     //Move the snake and check if it collect a brick
@@ -57,6 +59,13 @@ private:
     
     //True when the snake collects a wrong brick, hits itself or gets out the board
     bool gameOver;
+    
+    //Tells if game is over because of collecting a wrong number
+    bool wrongNumberGameOver;
+    
+    //Communications to draw when the game is over
+    Text crashCommunication;
+    Text wrongNumberCommunication;
     
     //*************
     

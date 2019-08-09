@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     
     //Create a board
     bool hardLvl = true;
-    Board board = Board(hardLvl, 800, 600, oneBrickDimension);
+    Board board = Board(Window::renderer, "fonts/Pacifico.ttf", hardLvl, 800, 600, oneBrickDimension);
     
     
     

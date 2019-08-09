@@ -26,7 +26,7 @@ public:
     ~Snake();
     
     //Build on the snake by adding another Brick to the vector
-    void Build(Brick &b);
+    void Build(Brick &b, Location l);
     
     //Move a Snake by one position on the Board in current Snake's direction
     void Move();
