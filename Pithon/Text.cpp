@@ -30,3 +30,7 @@ SDL_Texture *Text::LoadFont(SDL_Renderer *renderer, const std::string &fontPath,
 	SDL_FreeSurface(textSurface);
 	return _textTexture;
 }
+
+void Text::ModulateColor(SDL_Color &color) {
+    SDL_SetTextureColorMod(textTexture, color.r, color.g, color.b);
+}
