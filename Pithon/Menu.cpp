@@ -6,6 +6,7 @@
 //  Copyright © 2019 Radek. All rights reserved.
 //
 #include "Menu.h"
+#include "main.h"
 #include <stdio.h>
 #include <iostream>
 
@@ -104,20 +105,19 @@ void Menu::ExecuteItem() {
             //Click on 'Play' cause move to play menu
             case 0:
                 inMainMenu = false;
-                mainMenuItems[0].ModulateColor(white);
                 inPlayMenu = true;
                 playMenuItems[0].ModulateColor(red);
                 break;
                 
-            //Click on 'Info' cause nothing for now
+            //Click on 'Info' cause info showing
             case 1:
                 inMainMenu = false;
                 inInfo = true;
                 break;
                 
-            //Click on 'Exit' either
+            //Click on 'Exit' change game state to Exit
             case 2:
-                
+                gameState = Exit;
                 break;
                 
             default:
@@ -130,12 +130,17 @@ void Menu::ExecuteItem() {
         switch (selectedItem) {
             //Click on 'Easy level' cause communication displaying
             case 0:
-                std::cout << "You have run Easy Level!" << std::endl;
+                gameState = EasyLevelChosen;
+                inPlayMenu = false;
+                inMainMenu = true;
                 break;
                 
             //Click on 'Hard level' cause communication displaying
             case 1:
-                std::cout << "You have run Hard Level!" << std::endl;
+                gameState = HardLevelChosen;
+                inPlayMenu = false;
+                inMainMenu = true;
+                selectedItem = 0;
                 break;
                 
             default:

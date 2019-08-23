@@ -35,6 +35,9 @@ public:
     //Draw the board
     void Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rects);
     
+    //Return gameOver
+    inline bool IsGameOver() { return gameOver; }
+    
 private:
     //Define the difficulty level of game (when piKnowerMode is disabled, player collect the bricks one by one and learn the decimal expandion of pi; when piKnowerMode is endabled, player see three bricks in one time and he has to choose the one with the correct next pi's decimal expansion number)
     bool piKnowerMode;

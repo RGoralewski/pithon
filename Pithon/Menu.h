@@ -17,6 +17,8 @@
 #define MAX_MAIN_MENU_ITEMS 3
 #define MAX_PLAY_MENU_ITEMS 2
 
+
+
 class Menu
 {
 public:
@@ -26,6 +28,7 @@ public:
     void PollEvents(SDL_Event &event);
     
     void Draw(SDL_Renderer* renderer);
+    
     
 private:
     Rect menuBackground;

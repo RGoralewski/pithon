@@ -52,6 +52,7 @@
 		BF7BDF8022FEDCD600B29102 /* Menu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		BFC6207822F044ED00F0DE45 /* Board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		BFC6207922F088B100F0DE45 /* Board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
+		BFE850A4230C8F83006FB2BA /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		BFF089C222E06E09008F4531 /* Snake.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Snake.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +102,7 @@
 				BFF089C222E06E09008F4531 /* Snake.cpp */,
 				BF53DA9E22E06E4A0057A1DC /* Snake.h */,
 				BF2239E222DDF6C400A3CEFC /* main.cpp */,
+				BFE850A4230C8F83006FB2BA /* main.h */,
 				BFC6207822F044ED00F0DE45 /* Board.h */,
 				BFC6207922F088B100F0DE45 /* Board.cpp */,
 				BF7BDF7E22FEDCC400B29102 /* Menu.cpp */,

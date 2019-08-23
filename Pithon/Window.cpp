@@ -1,5 +1,5 @@
 #include "Window.h"
-
+#include "main.h"
 #include <SDL2_image/SDL_image.h>
 #include <SDL2_ttf/SDL_ttf.h>
 #include <iostream>
@@ -74,27 +74,16 @@ bool Window::Init()
 	return true;
 }
 
-
+void Window::CheckExit() {
+    if (gameState == Exit) {
+        closed = true;
+    }
+}
 
 void Window::PollEvents(SDL_Event &event) {
 	switch (event.type) {
 	case SDL_QUIT:
 		closed = true;
-		break;
-
-	case SDL_KEYDOWN:
-		switch (event.key.keysym.sym) {
-
-		case SDLK_ESCAPE:
-			closed = true;
-			break;
-
-		default:
-			break;
-		}
-
-	case SDL_MOUSEMOTION:
-		//std::cout << event.motion.x << ", " << event.motion.y << std::endl;
 		break;
 
 	default:

@@ -13,6 +13,9 @@ public:
 
 	//Handle events
 	void PollEvents(SDL_Event &event);
+    
+    //Checks if key exit was pressed (by checking the game state)
+    void CheckExit();
 
 	//Clean a window
 	void Clear();
