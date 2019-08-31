@@ -16,7 +16,7 @@
 
 
 Board::Board(SDL_Renderer* renderer, const std::string &fontPath, bool _piKnowerMode, int screenWidth, int screenHeight, int _dimensionOfOneBrick, Location snakeLocation, int xDir, int yDir, double _snakeSpeed) :
-    piKnowerMode(_piKnowerMode), dimensionOfOneBrick(_dimensionOfOneBrick), snake(3, snakeLocation, xDir, yDir),
+    piKnowerMode(_piKnowerMode), dimensionOfOneBrick(_dimensionOfOneBrick), snake(10, snakeLocation, xDir, yDir),
     snakeSpeed(_snakeSpeed),
 
     //Create communications

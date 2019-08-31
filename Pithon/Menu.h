@@ -22,7 +22,7 @@
 class Menu
 {
 public:
-    Menu(SDL_Renderer *renderer, int screenWidth, int screenHeight, SDL_Color backgroundColor, const std::string &infoImagePath, const std::string &itemsFontPath);
+    Menu(SDL_Renderer *renderer, int screenWidth, int screenHeight, const std::string &menuBackgroundPath, const std::string &infoImagePath, const std::string &itemsFontPath);
     ~Menu();
     
     void PollEvents(SDL_Event &event);

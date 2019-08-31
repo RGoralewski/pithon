@@ -11,14 +11,14 @@
 #include <iostream>
 
 
-SDL_Color Menu::red = {255, 0, 0};
+SDL_Color Menu::red = {190, 48, 37};
 SDL_Color Menu::white = {255, 255, 255};
 int Menu::fontSize = 40;
 
 
-Menu::Menu(SDL_Renderer *renderer, int screenWidth, int screenHeight, SDL_Color backgroundColor, const std::string &infoImagePath, const std::string &itemsFontPath) :
+Menu::Menu(SDL_Renderer *renderer, int screenWidth, int screenHeight, const std::string &menuBackgroundPath, const std::string &infoImagePath, const std::string &itemsFontPath) :
 //Create the background image
-menuBackground(screenWidth, screenHeight, backgroundColor.r, backgroundColor.g, backgroundColor.a, 255),
+menuBackground(renderer, screenWidth, screenHeight, menuBackgroundPath),
 
 //Create the info image
 infoImage(renderer, screenWidth, screenHeight, infoImagePath),
@@ -141,6 +141,7 @@ void Menu::ExecuteItem() {
                 inPlayMenu = false;
                 inMainMenu = true;
                 selectedItem = 0;
+                playMenuItems[1].ModulateColor(white);
                 break;
                 
             default:
