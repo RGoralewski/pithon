@@ -121,7 +121,7 @@ int main(int argc, char **argv)
         
         //Draw board
         if (!game.empty()) {
-            game.top().Draw(Window::renderer, rectangles);
+            game.top().Draw(Window::renderer, rectangles, "fonts/Pacifico.ttf");
         }
         
 		window.Clear();

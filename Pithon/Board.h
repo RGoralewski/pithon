@@ -17,8 +17,8 @@
 #include <chrono>
 
 //Decimal expansion of pi in an array
-static const int PI_ACCURACY = 47;
-static int PI_DEC_EXP[PI_ACCURACY] = { 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5, 0, 2, 8, 8, 4, 1, 9, 7, 1, 6, 9 };
+static const int PI_ACCURACY = 72;
+static int PI_DEC_EXP[PI_ACCURACY] = { 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9, 3, 2, 3, 8, 4, 6, 2, 6, 4, 3, 3, 8, 3, 2, 7, 9, 5, 0, 2, 8, 8, 4, 1, 9, 7, 1, 6, 9, 3, 9, 9, 3, 7, 5, 1, 0, 5, 8, 2, 0, 9, 7, 4, 9, 4, 4, 5, 9, 2, 3, 0, 7, 8, 1, 6, 4, 0, 6 };
 
 class Board
 {
@@ -33,7 +33,7 @@ public:
     void PollEvents(SDL_Event &event);
 
     //Draw the board
-    void Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rects);
+    void Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rects, const std::string &fontPath);
     
     //Return gameOver
     inline bool IsGameOver() { return gameOver; }

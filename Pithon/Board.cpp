@@ -16,8 +16,8 @@
 
 
 Board::Board(SDL_Renderer* renderer, const std::string &fontPath, bool _piKnowerMode, int screenWidth, int screenHeight, int _dimensionOfOneBrick, Location snakeLocation, int xDir, int yDir, double _snakeSpeed) :
-    piKnowerMode(_piKnowerMode), dimensionOfOneBrick(_dimensionOfOneBrick), snake(10, snakeLocation, xDir, yDir),
-    snakeSpeed(_snakeSpeed),
+    piKnowerMode(_piKnowerMode), dimensionOfOneBrick(_dimensionOfOneBrick),
+    snake(10, snakeLocation, xDir, yDir), snakeSpeed(_snakeSpeed),
 
     //Create communications
     crashCommunication(renderer, fontPath, 60, "Snake is crashed!", {255, 255, 255}),
@@ -199,7 +199,7 @@ void Board::PollEvents(SDL_Event &event) {
     }
 }
 
-void Board::Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rects){
+void Board::Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rects, const std::string &fontPath){
     //Draw the snake
     snake.Draw(renderer, rects, dimensionOfOneBrick);
     
@@ -210,9 +210,26 @@ void Board::Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rec
     
     //Draw communication if there's a game over
     if (gameOver && !wrongNumberGameOver) {
-        crashCommunication.Draw(nColumns*dimensionOfOneBrick/2 - crashCommunication.GetWidth()/2, nRows*dimensionOfOneBrick/2 - crashCommunication.GetHeight(), renderer);
+        //Draw game over communication
+        int crashComX = nColumns*dimensionOfOneBrick/2 - crashCommunication.GetWidth()/2;
+        int crashComY = nRows*dimensionOfOneBrick/2 - crashCommunication.GetHeight();
+        crashCommunication.Draw(crashComX, crashComY, renderer);
+        
+        //Create a comminication about number of collected bricks
+        std::string communication = "Score: " + std::to_string(snake.GetLength() - 1);
+        Text collectedBricks(renderer, fontPath, 60, communication, {255, 255, 255});
+        collectedBricks.Draw(crashComX, crashComY + crashCommunication.GetHeight() + 10, renderer);
     }
+    
     if (gameOver && wrongNumberGameOver) {
-        wrongNumberCommunication.Draw(nColumns*dimensionOfOneBrick/2 - wrongNumberCommunication.GetWidth()/2, nRows*dimensionOfOneBrick/2 - wrongNumberCommunication.GetHeight(), renderer);
+        //Draw game over communication
+        int wrongNumberComX = nColumns*dimensionOfOneBrick/2 - wrongNumberCommunication.GetWidth()/2;
+        int wrongNumberComY = nRows*dimensionOfOneBrick/2 - wrongNumberCommunication.GetHeight();
+        wrongNumberCommunication.Draw(wrongNumberComX, wrongNumberComY, renderer);
+        
+        //Create a comminication about number of collected bricks
+        std::string communication = "Score: " + std::to_string(snake.GetLength() - 1);
+        Text collectedBricks(renderer, fontPath, 60, communication, {255, 255, 255});
+        collectedBricks.Draw(wrongNumberComX, wrongNumberComY + wrongNumberCommunication.GetHeight() + 10, renderer);
     }
 }
