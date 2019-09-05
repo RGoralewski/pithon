@@ -33,7 +33,8 @@ public:
     void PollEvents(SDL_Event &event);
 
     //Draw the board
-    void Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rects, const std::string &fontPath);
+    void Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rects, const std::string &fontPath,
+              std::__1::chrono::duration<long long, std::__1::ratio<1, 1000000> > timeFromGameOver);
     
     //Return gameOver
     inline bool IsGameOver() { return gameOver; }

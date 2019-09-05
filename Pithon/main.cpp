@@ -20,9 +20,6 @@ const int SCREEN_HEIGHT = 600;
 //Create an enum for game states
 enum GameState gameState = MenuActive;
 
-//This is set to current time when gameState is changing to GameOver - it enable to wait a few seconds for game over communication to display
-std::chrono::time_point<std::chrono::system_clock> gameStateChangeToGameOverTime;
-
 //Poll events function
 void pollEvents(Window &Win, Menu &M, std::stack<Board> &G) {
     
@@ -66,13 +63,14 @@ int main(int argc, char **argv)
     //Create a stack for the board
     std::stack<Board> game;
     
+    //This is set to current time when gameState is changing to GameOver - it enable to wait a few seconds for game over communication to display
+    std::chrono::time_point<std::chrono::system_clock> gameStateChangeToGameOverTime;
 
     //Game loop
 	while (!window.IsClosed()) {
         
         //******Handle events*****
 		pollEvents(window, menu, game);
-        
         
         
         //******Update******
@@ -93,7 +91,7 @@ int main(int argc, char **argv)
             game.top().Update();
         }
         
-        //Check if game is over - if it is change the game state
+        //Check if game is over - if it is a change of the game state
         if (!game.empty() && gameState != GameOver) {   //second condition is for execute code inside only once
             if (game.top().IsGameOver() == true) {
                 gameState = GameOver;
@@ -104,7 +102,7 @@ int main(int argc, char **argv)
         //If game state is GameOver, wait a few second for communication to display
         //and pop this board from the stack. Then change the game state to MenuActive.
         auto timeFromGameOver = std::chrono::system_clock::now() - gameStateChangeToGameOverTime;
-        if (!game.empty() && gameState == GameOver && timeFromGameOver >= std::chrono::seconds{3}) {
+        if (!game.empty() && gameState == GameOver && timeFromGameOver >= std::chrono::seconds{5}) {
             game.pop();
             gameState = MenuActive;
         }
@@ -121,7 +119,7 @@ int main(int argc, char **argv)
         
         //Draw board
         if (!game.empty()) {
-            game.top().Draw(Window::renderer, rectangles, "fonts/Pacifico.ttf");
+            game.top().Draw(Window::renderer, rectangles, "fonts/Pacifico.ttf", timeFromGameOver);
         }
         
 		window.Clear();
