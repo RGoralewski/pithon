@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 {
     Window window("Pithon");
     
-    Menu menu(Window::renderer, SCREEN_WIDHT, SCREEN_HEIGHT, "new_images/menu_background.png", "images/info_image.png", "fonts/Pacifico.ttf");
+    Menu menu(Window::renderer, SCREEN_WIDHT, SCREEN_HEIGHT, "new_images/menu_background.png", "new_images/play_menu_background.png", "new_images/info_image.png", "fonts/Pacifico.ttf");
     
     //Create a vector of Rects to represent the bricks and the snake
     int oneBrickDimension = 50;

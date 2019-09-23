@@ -15,6 +15,7 @@
 #include "Text.h"
 #include <vector>
 #include <chrono>
+#include <stack>
 
 //Decimal expansion of pi in an array
 static const int PI_ACCURACY = 72;
@@ -70,6 +71,9 @@ private:
     //Communications to draw when the game is over
     Text crashCommunication;
     Text wrongNumberCommunication;
+    
+    //Stack to place a communication about the score
+    std::stack<Text> scoreCommunication;
     
     //*************
     

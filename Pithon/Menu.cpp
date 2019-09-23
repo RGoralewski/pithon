@@ -16,9 +16,13 @@ SDL_Color Menu::white = {255, 255, 255};
 int Menu::fontSize = 40;
 
 
-Menu::Menu(SDL_Renderer *renderer, int screenWidth, int screenHeight, const std::string &menuBackgroundPath, const std::string &infoImagePath, const std::string &itemsFontPath) :
-//Create the background image
+Menu::Menu(SDL_Renderer *renderer, int screenWidth, int screenHeight, const std::string &menuBackgroundPath,
+        const std::string &playMenuBackgroundPath, const std::string &infoImagePath, const std::string &itemsFontPath) :
+//Create main menu background image
 menuBackground(renderer, screenWidth, screenHeight, menuBackgroundPath),
+
+//Create play menu background image
+playMenuBackground(renderer, screenWidth, screenHeight, playMenuBackgroundPath),
 
 //Create the info image
 infoImage(renderer, screenWidth, screenHeight, infoImagePath),
@@ -196,11 +200,13 @@ void Menu::PollEvents(SDL_Event &event) {
 
 void Menu::Draw(SDL_Renderer* renderer) {
     
-    //Display the background
-    menuBackground.Draw(renderer, 0, 0);
     
     //Display main menu
     if (inMainMenu) {
+        //Display the background
+        menuBackground.Draw(renderer, 0, 0);
+        
+        //Display options
         int yDrawPosition = 50;
         for (int i = 0; i < MAX_MAIN_MENU_ITEMS; i++) {
             mainMenuItems[i].Draw(50, yDrawPosition, renderer);
@@ -210,6 +216,10 @@ void Menu::Draw(SDL_Renderer* renderer) {
     
     //Display play menu
     if (inPlayMenu) {
+        //Display the background
+        playMenuBackground.Draw(renderer, 0, 0);
+        
+        //Display options
         int yDrawPosition = 50;
         for (int i = 0; i < MAX_PLAY_MENU_ITEMS; i++) {
             playMenuItems[i].Draw(50, yDrawPosition, renderer);

@@ -22,7 +22,7 @@
 class Menu
 {
 public:
-    Menu(SDL_Renderer *renderer, int screenWidth, int screenHeight, const std::string &menuBackgroundPath, const std::string &infoImagePath, const std::string &itemsFontPath);
+    Menu(SDL_Renderer *renderer, int screenWidth, int screenHeight, const std::string &menuBackgroundPath, const std::string &playMenuBackgroundPath, const std::string &infoImagePath, const std::string &itemsFontPath);
     ~Menu();
     
     void PollEvents(SDL_Event &event);
@@ -32,6 +32,7 @@ public:
     
 private:
     Rect menuBackground;
+    Rect playMenuBackground;
     Rect infoImage;
     Text mainMenuItems[MAX_MAIN_MENU_ITEMS];
     Text playMenuItems[MAX_PLAY_MENU_ITEMS];

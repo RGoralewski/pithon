@@ -204,14 +204,25 @@ void Board::Draw(SDL_Renderer* renderer, std::vector<std::unique_ptr<Rect>> &rec
     
     //Display a score
     if (gameOver && timeFromGameOver >= std::chrono::seconds{2}) {
-        std::string communication = "Score: " + std::to_string(snake.GetLength() - 1);
-        Text score(renderer, fontPath, 60, communication, {255, 255, 255});
-        int scoreX = nColumns*dimensionOfOneBrick/2 - score.GetWidth()/2;
-        int scoreY = nRows*dimensionOfOneBrick/2 - score.GetHeight()/2;
-        score.Draw(scoreX, scoreY, renderer);
+        //Place the communition in the stack if it doesn't exsist
+        if (scoreCommunication.empty() == true) {
+            std::string communication = "Score: " + std::to_string(snake.GetLength() - 1);
+            Text score(renderer, "fonts/Pacifico.ttf", 60, communication, {255, 255, 255});
+            scoreCommunication.push(score);
+        }
+        
+        //Display in the middle of the screen
+        int scoreX = nColumns*dimensionOfOneBrick/2 - scoreCommunication.top().GetWidth()/2;
+        int scoreY = nRows*dimensionOfOneBrick/2 - scoreCommunication.top().GetHeight()/2;
+        scoreCommunication.top().Draw(scoreX, scoreY, renderer);
     }
     
     else {
+        //Pop the score communication from the stack if it still exsist
+        if (scoreCommunication.empty() == false) {
+            scoreCommunication.pop();
+        }
+        
         //Draw the snake
         snake.Draw(renderer, rects, dimensionOfOneBrick);
     
