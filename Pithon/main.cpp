@@ -41,23 +41,23 @@ int main(int argc, char **argv)
 {
     Window window("Pithon");
     
-    Menu menu(Window::renderer, SCREEN_WIDHT, SCREEN_HEIGHT, "new_images/menu_background.png", "new_images/play_menu_background.png", "new_images/info_image.png", "fonts/Pacifico.ttf");
+    Menu menu(Window::renderer, SCREEN_WIDHT, SCREEN_HEIGHT, "images/menu_background.png", "images/play_menu_background.png", "images/info_image.png", "fonts/Pacifico.ttf");
     
     //Create a vector of Rects to represent the bricks and the snake
     int oneBrickDimension = 50;
     std::vector<std::unique_ptr<Rect>> rectangles;
-    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "new_images/0.png"));
-    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "new_images/1.png"));
-    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "new_images/2.png"));
-    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "new_images/3.png"));
-    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "new_images/4.png"));
-    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "new_images/5.png"));
-    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "new_images/6.png"));
-    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "new_images/7.png"));
-    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "new_images/8.png"));
-    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "new_images/9.png"));
+    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "images/0.png"));
+    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "images/1.png"));
+    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "images/2.png"));
+    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "images/3.png"));
+    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "images/4.png"));
+    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "images/5.png"));
+    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "images/6.png"));
+    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "images/7.png"));
+    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "images/8.png"));
+    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "images/9.png"));
     //Number 10 stands for 3, (the head of the snake)
-    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "new_images/10.png"));
+    rectangles.push_back(std::make_unique<Rect>(Window::renderer, oneBrickDimension, oneBrickDimension, "images/10.png"));
     
     
     //Create a stack for the board
